@@ -119,5 +119,22 @@ namespace CRUDAPI.Controllers
 
             return Ok(emaployee);
         }
+
+        [HttpDelete]
+        [Route("DeleteEmployeeDetails")]
+        public IHttpActionResult DeleteEmaployeeDelete1(int id)
+        {
+            //int empId = Convert.ToInt32(id);
+            EmployeeDetail emaployee = objEntity.EmployeeDetails.Find(id);
+            if (emaployee == null)
+            {
+                return NotFound();
+            }
+
+            objEntity.EmployeeDetails.Remove(emaployee);
+            objEntity.SaveChanges();
+
+            return Ok(emaployee);
+        }
     }
 }
